@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import { getPosts } from '../store/actions/Posts.action';
+import { getPosts } from '../features/counter/posterSlice';
 
 const Posts = () => {
   const dispatch = useDispatch()
-  const { posts, loading, error } = useSelector((state) => state.postReducer)
+  const { posts, loading, error } = useSelector((state) => state.poster)
 
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const Posts = () => {
   }, [])
 
   if(error !== null) {
-    return <p>Ups! Ocurrió un error. Error: {error.message}. Vuelve a intentarlo</p>
+    return <p>Ups! Ocurrió un error. Error: {error}. Vuelve a intentarlo</p>
   }
 
   return(
@@ -21,7 +21,7 @@ const Posts = () => {
       {loading ? (
         <p>Loading...</p>
       ) : 
-      posts.map((item) => {
+      posts[0]?.map((item) => {
         return(
           <div key={item.id}>
             <h2>{item.title}</h2>

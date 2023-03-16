@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/counterSlice";
-// import posterReducer from ""
-// import textReducer from ""
+import posterReducer from "../features/counter/posterSlice";
+
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    //poster: posterReducer,
-    //text: textReducer
+    poster: posterReducer,
+    
   },
 });
